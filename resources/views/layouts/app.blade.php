@@ -46,6 +46,47 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                            <li><a href="">Profile</a> </li>
+
+
+                        @if(Auth::user()->role_id == 1)
+                            <li><a href="">Patients</a> </li>
+                            <li><a href="">All Prescribtion</a> </li>
+                        @endif
+
+                        @if(Auth::user()->role_id == 2)
+                            <li><a href="">Doctor</a> </li>
+                            <li><a href="">Create Patients</a> </li>
+                            <li><a href="">Create Patients</a> </li>
+                            <li><a href="">Write Prescribtion</a> </li>
+                        @endif
+
+                        @if(Auth::user()->role_id == 3)
+                            <li><a href="">Company</a> </li>
+                            <li><a href="">Add Logo</a> </li>
+                            <li><a href="">All Doctors</a> </li>
+                            <li><a href="">Add Doctor</a> </li>
+                            <li><a href="">All Patients</a> </li>
+                            <li><a href="">All Prescribtions</a> </li>
+                            All Prescribtion
+                        @endif
+
+                        @if(Auth::user()->role_id == 4)
+                            <li><a href="">Publisher.</a> </li>
+                            <li><a href="">Create Add.</a> </li>
+                        @endif
+
+                        @if(Auth::user()->role_id == 5)
+                            <li><a href="">Admin</a> </li>
+                            <li><a href="">All Company.</a> </li>
+                            <li><a href="">All Doctor.</a> </li>
+                            <li><a href="">All Patients.</a> </li>
+                            <li><a href="">All Prescribtions.</a> </li>
+                            <li><a href="">All Publisher.</a> </li>
+                            <li><a href="">Create Stuff.</a> </li>
+                        @endif
+
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
