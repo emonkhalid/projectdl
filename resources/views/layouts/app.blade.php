@@ -49,34 +49,33 @@
                             <li><a href="">Profile</a> </li>
 
 
-                        @if(Auth::user()->role_id == 1)
+                        @if(Auth::user()->role->name == "patient")
                             <li><a href="">Patients</a> </li>
                             <li><a href="">All Prescribtion</a> </li>
                         @endif
 
-                        @if(Auth::user()->role_id == 2)
+                       @if(Auth::user()->role->name == "doctor")
                             <li><a href="">Doctor</a> </li>
                             <li><a href="">Create Patients</a> </li>
                             <li><a href="">Create Patients</a> </li>
                             <li><a href="">Write Prescribtion</a> </li>
                         @endif
 
-                        @if(Auth::user()->role_id == 3)
+                        @if(Auth::user()->role->name == "company")
                             <li><a href="">Company</a> </li>
                             <li><a href="">Add Logo</a> </li>
                             <li><a href="">All Doctors</a> </li>
                             <li><a href="">Add Doctor</a> </li>
                             <li><a href="">All Patients</a> </li>
                             <li><a href="">All Prescribtions</a> </li>
-                            All Prescribtion
                         @endif
 
-                        @if(Auth::user()->role_id == 4)
+                        @if(Auth::user()->role->name == "publisher")
                             <li><a href="">Publisher.</a> </li>
                             <li><a href="">Create Add.</a> </li>
                         @endif
 
-                        @if(Auth::user()->role_id == 5)
+                        @if(Auth::user()->role->name == "admin")
                             <li><a href="">Admin</a> </li>
                             <li><a href="">All Company.</a> </li>
                             <li><a href="">All Doctor.</a> </li>

@@ -43,6 +43,8 @@
                             <label for="mobile" class="col-md-4 control-label">Personal Mobile</label>
 
                             <div class="col-md-6">
+                                 <div class="input-group">
+                                <div class="input-group-addon">+880</div>
                                 <input id="mobile" type="text" class="form-control" name="mobile" value="{{ old('mobile') }}" required placeholder="01722036002">
 
                                 @if ($errors->has('mobile'))
@@ -50,6 +52,7 @@
                                         <strong>{{ $errors->first('mobile') }}</strong>
                                     </span>
                                 @endif
+                                 </div>
                             </div>
                         </div>
 
