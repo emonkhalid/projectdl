@@ -77,11 +77,12 @@
 
                         @if(Auth::user()->role->name == "admin")
                             <li><a href="">Admin</a> </li>
-                            <li><a href="">All Company.</a> </li>
-                            <li><a href="">All Doctor.</a> </li>
-                            <li><a href="">All Patients.</a> </li>
-                            <li><a href="">All Prescribtions.</a> </li>
-                            <li><a href="">All Publisher.</a> </li>
+                            <li><a href="{{ route('users.index') }}">All User</a> </li>
+                            <li><a href="">Companies</a> </li>
+                            <li><a href="">Doctors</a> </li>
+                            <li><a href="">Patients.</a> </li>
+                            <li><a href="">Prescribtions.</a> </li>
+                            <li><a href="">Publishers</a> </li>
                             <li><a href="">Create Stuff.</a> </li>
                         @endif
 

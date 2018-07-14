@@ -36,14 +36,15 @@
                     <div class="col-lg-8 col-lg-offset-2 col-md-8 col-sm-8 col-xs-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                               Create User
+                               Edit User
                                <a class="btn btn-default  btn-sm pull-right" href="{{ route('users.index') }}">All User</a>
+                               <a class="btn btn-primary  btn-sm pull-right" href="">Search</a> 
                             </div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-12">
 
-    {!! Form::open(['method' => 'POST', 'action'=>'UsersController@store', 'files'=>true]) !!}
+    {!! Form::open(['method' => 'POST', 'action'=>'UsersController@store']) !!}
 
         <div class="form-group">
             {!! Form::label('name', 'Name') !!}
@@ -57,37 +58,31 @@
 
         <div class="form-group">
             {!! Form::label('password', 'Password') !!}
-            {!! Form::password('password', ['class' => 'form-control']) !!}
+            {!! Form::text('password', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
             {!! Form::label('mobile', 'Mobile') !!}
             {!! Form::text('mobile', null, ['class' => 'form-control']) !!}
-        </div>     
-
-        <div class="form-group">
-            {!! Form::label('role_id', 'Role') !!}
-            {!! Form::select('role_id', [''=>'Choose Role'] + $roles, null, ['class'=>'form-control']) !!}
         </div>
 
-        <div class="form-group">
-            {!! Form::label('photo_id', 'Select Photo') !!}
-            {!! Form::file('photo_id', null, ['class' => 'form-control']) !!}
+        
+
+       <div class="form-group">
+            {!! Form::label('role_id', 'Role') !!}
+            {!! Form::select('role_id', array('1'=>'Patients','2'=>'Doctor','3'=>'Company','4'=>'Publisher','5'=>'admin','6'=>'DLBDstuff'), null, ['class'=>'form-control']) !!}
         </div>
 
         <div class="form-group">
             {!! Form::label('status', 'Status') !!}
-            {!! Form::select('is_active', array(''=>'Choose Status','0'=>'Decative','1'=>'Active'), null, ['class'=>'form-control']) !!}
+            {!! Form::select('is_active', array(''=>'Decative','1'=>'Active'), null, ['class'=>'form-control']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::submit('Create User', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Update User', ['class' => 'btn btn-primary']) !!}
         </div>
 
     {!! Form::close() !!}
-
-    @include('includes.form_errors')
-    
 
                                    </div>
                                 </div>

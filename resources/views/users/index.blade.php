@@ -35,26 +35,29 @@
 
                     <div class="row">
                         <div class="col-lg-12 ">
-                            <table class="table table-striped table-condensed">
+                            <table class="table table-striped table-responsive">
                                   <thead>
                                   <tr class="danger">
+                                      <th>Photo</th>
                                       <th>Name</th>
-                                      <th>Email</th>
+                                      <!-- <th>Email</th> -->
                                       <th>Role</th>
                                       <th>Created</th>
-                                      <th>Updated</th>
-                                      <th>Status</th>                                          
+                                      <th>Status</th>
+                                      <th>Actions</th>                                          
                                   </tr>
                               </thead>   
                               <tbody>
                             @if($users)
                                 @foreach($users as $user)
                                 <tr>
+                                    <td>
+                                        <img class="img-responsive" width="100" height="80" src="images/{{ $user->photo->file }}"></td>
                                     <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
+                                   <!--  <td>{{ $user->email }}</td> -->
                                     <td>{{ $user->role->name }}</td>
                                     <td>{{ $user->created_at->diffForHumans() }}</td>
-                                    <td>{{ $user->updated_at->diffForHumans() }}</td>
+                
                                     @if($user->is_active == 1)
                                     <td>
                                         <span class="label label-success">Active</span>
@@ -62,15 +65,26 @@
                                     @endif
                                     @if($user->is_active == 0)
                                         <td>
-                                        <span class="label label-danger">Deactive</span>
+                                        <span class="label label-warning">Not Active</span>
                                     </td>
                                     @endif
+                                    <td>
+                                        <a class ="btn btn-danger btn-xs" href="">Delete</a> | 
+                                        <a class ="btn btn-primary btn-xs" href="">Edit</a> | 
+                                        <a class ="btn btn-success btn-xs" href="{{ route('users.show',$user->id)}}">View</a>
+                                    </td>
                                                                        
                                 </tr>
                                 @endforeach
                             @endif                                     
                               </tbody>
                             </table>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <a class="btn btn-primary  btn-md" href="{{ route('users.create') }}">Create User</a>
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            {{ $users->render() }}
                         </div>
                     </div>                                   
                 </div>
