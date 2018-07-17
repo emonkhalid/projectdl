@@ -35,16 +35,44 @@
 
                     <div class="row">
                         <div class="col-lg-12 ">
+
+                            @if(Session::has('user_created'))
+                                <div class="alert alert-success text-center" role="alert">
+                                   <strong>  {{ session('user_created') }} </strong>
+                                </div>
+                            @endif
+
+                            @if(Session::has('user_updated'))
+                                <div class="alert alert-warning text-center" role="alert">
+                                   <strong>  {{ session('user_updated') }} </strong>
+                                </div>
+                            @endif
+
+                            @if(Session::has('user_deleted'))
+                                <div class="alert alert-success text-center" role="alert">
+                                   <strong>  {{ session('user_deleted') }} </strong>
+                                </div>
+                            @endif
+
+                            @if(Session::has('user_deactive'))
+                                <div class="alert alert-danger text-center" role="alert">
+                                   <strong> {{ session('user_deactive') }} </strong>
+                                </div>
+                            @endif
+
+
                             <table class="table table-striped table-responsive">
                                   <thead>
-                                  <tr class="danger">
+                                  <tr class="alert-warning">
                                       <th>Photo</th>
                                       <th>Name</th>
                                       <!-- <th>Email</th> -->
                                       <th>Role</th>
                                       <th>Created</th>
                                       <th>Status</th>
-                                      <th>Actions</th>                                          
+                                      <th>Delete</th> 
+                                      <th>Edit</th>
+                                      <th>View</th>
                                   </tr>
                               </thead>   
                               <tbody>
@@ -52,7 +80,7 @@
                                 @foreach($users as $user)
                                 <tr>
                                     <td>
-                                        <img class="img-responsive" width="100" height="80" src="images/{{ $user->photo->file }}"></td>
+                                        <img class="img-responsive" width="100" height="80" src="{{ $user->photo->file }}"></td>
                                     <td>{{ $user->name }}</td>
                                    <!--  <td>{{ $user->email }}</td> -->
                                     <td>{{ $user->role->name }}</td>
@@ -68,11 +96,20 @@
                                         <span class="label label-warning">Not Active</span>
                                     </td>
                                     @endif
-                                    <td>
-                                        <a class ="btn btn-danger btn-xs" href="">Delete</a> | 
-                                        <a class ="btn btn-primary btn-xs" href="">Edit</a> | 
-                                        <a class ="btn btn-success btn-xs" href="{{ route('users.show',$user->id)}}">View</a>
-                                    </td>
+                                    <!-- <td> -->
+
+                                        <td>{!! Form::open(['method' => 'DELETE', 'action'=>['UsersController@destroy',$user->id]]) !!}
+{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+{!! Form::close() !!}</td>
+                                        <td><a class ="btn btn-primary btn-xs" href="{{ route('users.edit',$user->id) }}">Edit</a></td>
+                                        <td><a class ="btn btn-success btn-xs" href="{{ route('users.show',$user->id)}}">View</a></td>
+
+
+                                          
+                                        <!-- <a class ="btn btn-primary btn-xs" href="{{ route('users.edit',$user->id) }}">Edit</a> | 
+                                        <a class ="btn btn-success btn-xs" href="{{ route('users.show',$user->id)}}">View</a> -->
+ 
+                                   <!-- </td> -->
                                                                        
                                 </tr>
                                 @endforeach
@@ -81,7 +118,7 @@
                             </table>
                         </div>
                         <div class="col-lg-12 text-center">
-                            <a class="btn btn-primary  btn-md" href="{{ route('users.create') }}">Create User</a>
+                            <a class="btn btn-primary  btn-lg" href="{{ route('users.create') }}">Create User</a>
                         </div>
                         <div class="col-lg-12 text-center">
                             {{ $users->render() }}
